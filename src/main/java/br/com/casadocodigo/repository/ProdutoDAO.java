@@ -1,7 +1,21 @@
 package br.com.casadocodigo.repository;
 
-/**
- * Created by william on 13/04/2017.
- */
+
+import br.com.casadocodigo.model.Produto;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Repository
+@Transactional
 public class ProdutoDAO {
+
+    @PersistenceContext
+    private EntityManager manager;
+
+    public void gravar(Produto produto) {
+        manager.persist(produto);
+    }
 }
